@@ -21,4 +21,7 @@ router.get('/colaboradores', colaboradorController.listallColaboradores);
 // ==> Rota responsável por listar determinado colaborador, por Id: (GET): localhost:3000/api/colaboradores/:id
 router.get('/colaboradores/:id', colaboradorController.findColaborador);
 
+// ==> Rota responsável por atualizar um determinado colaborador por id: (PUT): localhost:3000/api/colaboradores/:id
+router.put('/colaboradores/:id', colaboradorController.updateColaborador);
+
  module.exports = router;
