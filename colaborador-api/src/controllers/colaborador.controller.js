@@ -22,8 +22,16 @@ exports.createColaborador = async (req, res) => {
     });
 }
 
-// ==> Método responsável por listar todos os colaboradores:
+// ==> Método responsável por listar todos os 'Colaboradores':
 exports.listallColaboradores = async (req, res) => {
     const response = await db.query('SELECT * FROM employee ORDER BY nome ASC');
     res.status(200).send(response.rows);
- }
+}
+
+// ==> Método responsável por listar um deteminado 'Colaborador' por Id:
+//Obs: o pareInt não funciona para o tipo guid.
+exports.findColaborador = async (req, res) => { 
+    const idColaborador = req.params.id;
+    const response = await db.query('SELECT * FROM employee WHERE id = $1', [idColaborador]);
+    res.status(200).send(response.rows);
+}
