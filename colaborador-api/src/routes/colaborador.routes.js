@@ -12,6 +12,10 @@
  
  // ==> Rota responsável por criar um novo 'Colaborador(a):' (POST): localhost:3000/api/colaboradores
 
-router.post('/colaboradores', colaboradorController.createColaborador)
+router.post('/colaboradores', colaboradorController.createColaborador);
+
+// ==> Rota responsável por listar todos os colaboradores: (GET): localhost:3000/api/colaboradores
+
+router.get('/colaboradores', colaboradorController.listallColaboradores);
 
  module.exports = router;
