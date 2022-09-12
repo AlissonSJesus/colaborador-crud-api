@@ -33,9 +33,9 @@ exports.listallColaboradores = async (req, res) => {
 //Obs: o pareInt não funciona para o tipo guid.
 exports.findColaborador = async (req, res) => {
     const idColaborador = req.params.id;
-    const response = ("SELECT id, nome, cargo, salary, matricula, to_char(data_nascimento, 'dd/MM/yyyy') as data_nascimento FROM employee WHERE id = $1", [idColaborador]);
+    const response = await db.query("SELECT id, nome, cargo, salary, matricula, to_char(data_nascimento, 'yyyy-MM-dd') as data_nascimento FROM employee WHERE id = $1", [idColaborador]);
     // const response = await db.query('SELECT * FROM employee WHERE id = $1', [idColaborador]);
-    res.status(200).send(response.rows);
+    res.status(200).send(response.rows[0]);
 }
 
 // ==> Método responsável por atualizar um determinado 'Colaborador(a)', por Id:
